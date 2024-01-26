@@ -9,11 +9,11 @@ namespace practice.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string CountryName { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string CountryEngName { get; set; }
 
         [Required]

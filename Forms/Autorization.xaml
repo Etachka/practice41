@@ -125,7 +125,7 @@
         <TextBlock Grid.Column="1" Grid.Row="2" Text="ID пользователя" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
         <TextBox x:Name="txtID" Grid.Column="1" Grid.Row="3" Margin="5 10 5 10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="password_PreviewTextInput"/>
         <TextBlock Grid.Column="1" Grid.Row="4" Text="Пароль" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
-        <TextBox x:Name="password" Style="{DynamicResource TextBoxStyle1}" Grid.Column="1" Grid.Row="5" Margin="5 10 5 10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="password" Style="{DynamicResource TextBoxStyle1}" Grid.Column="1" Grid.Row="5" Margin="5 10 5 10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="password_TextChanged"/>
         
         <Border x:Name="brdAuth"  Grid.Column="1" Grid.Row="7"  Margin="10 5 10 5" BorderThickness="1" BorderBrush="black" CornerRadius="25" MouseEnter="brdAuth_MouseEnter" MouseLeave="brdAuth_MouseLeave">
             <Button x:Name="btnAuth" Style="{DynamicResource ButtonStyle1}" Grid.Column="1" Grid.Row="7" Content="Войти" FontSize="20" Background="Transparent" BorderBrush="Transparent" MouseEnter="btnAuth_MouseEnter" MouseLeave="btnAuth_MouseLeave" Click="btnAuth_Click"/>

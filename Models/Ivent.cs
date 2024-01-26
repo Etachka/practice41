@@ -14,11 +14,13 @@ namespace practice.Models
 
         [Required]
         [StringLength(100)]
-        public int IventName { get; set; }
-        public DateTime? DateBegin { get; set; }
+        public string IventName { get; set; }
+        public DateOnly? DateBegin { get; set; }
         public int? DurationDays { get; set; }
 
         [StringLength(100)]
         public string Winner { get; set; }
+
+        public string Image { get; set; }
     }
 }

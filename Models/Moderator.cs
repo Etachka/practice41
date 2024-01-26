@@ -15,7 +15,7 @@ namespace practice.Models
 
         [StringLength(100)]
         public string? Mail { get; set; }
-        public DateTime? BirthDay{ get; set; }
+        public DateOnly? Birthday{ get; set; }
 
         [Required]
         public int CountryID { get; set; }

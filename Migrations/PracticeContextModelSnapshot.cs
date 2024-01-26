@@ -57,8 +57,8 @@ namespace practice.Migrations
                     b.Property<int>("OrganizersId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("TimeBegin")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<TimeOnly?>("TimeBegin")
+                        .HasColumnType("time without time zone");
 
                     b.HasKey("ID");
 
@@ -105,8 +105,8 @@ namespace practice.Migrations
                     b.Property<int>("City")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("Data")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly?>("Data")
+                        .HasColumnType("date");
 
                     b.Property<int?>("Days")
                         .HasColumnType("integer");
@@ -132,9 +132,6 @@ namespace practice.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("HyperAddress")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.ToTable("City");
@@ -158,13 +155,13 @@ namespace practice.Migrations
 
                     b.Property<string>("CountryEngName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("CountryName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
@@ -197,15 +194,20 @@ namespace practice.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("DateBegin")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly?>("DateBegin")
+                        .HasColumnType("date");
 
                     b.Property<int?>("DurationDays")
                         .HasColumnType("integer");
 
-                    b.Property<int>("IventName")
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("IventName")
+                        .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("integer");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Winner")
                         .IsRequired()
@@ -229,17 +231,14 @@ namespace practice.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<DateTime?>("Birthday")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly?>("Birthday")
+                        .HasColumnType("date");
 
                     b.Property<int?>("Country")
                         .IsRequired()
                         .HasColumnType("integer");
 
-                    b.Property<int>("DirectionId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("DirectionName")
+                    b.Property<int?>("DirectionId")
                         .HasColumnType("integer");
 
                     b.Property<string>("FIO")
@@ -290,8 +289,8 @@ namespace practice.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<DateTime?>("BirthDay")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly?>("Birthday")
+                        .HasColumnType("date");
 
                     b.Property<int>("CountryID")
                         .HasColumnType("integer");
@@ -342,8 +341,8 @@ namespace practice.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("Birthday")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly?>("Birthday")
+                        .HasColumnType("date");
 
                     b.Property<int?>("CountryID")
                         .IsRequired()
@@ -388,8 +387,8 @@ namespace practice.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("Birthday")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly?>("Birthday")
+                        .HasColumnType("date");
 
                     b.Property<int?>("CountryID")
                         .IsRequired()
@@ -411,9 +410,9 @@ namespace practice.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<int?>("Phone")
+                    b.Property<string>("Phone")
                         .HasMaxLength(20)
-                        .HasColumnType("integer");
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("Photo")
                         .HasMaxLength(1000)
@@ -474,9 +473,7 @@ namespace practice.Migrations
                 {
                     b.HasOne("practice.Models.Direction", "Direction")
                         .WithMany()
-                        .HasForeignKey("DirectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DirectionId");
 
                     b.Navigation("Direction");
                 });

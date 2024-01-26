@@ -12,7 +12,7 @@ namespace practice.Models
         [Required]
         [StringLength(100)]
         public string Mail { get; set; }
-        public DateTime? Birthday { get; set; }
+        public DateOnly? Birthday { get; set; }
 
         [Required]
         public int? CountryID { get; set; }

@@ -16,7 +16,7 @@ namespace practice.Models
         [StringLength(100)]
         public string ActionName { get; set; }
         public int? DayNumber { get; set; }
-        public DateTime? TimeBegin { get; set; }
+        public TimeOnly? TimeBegin { get; set; }
         public int? OrganizerID { get; set; }
         public Organizers Organizers { get; set; }
 

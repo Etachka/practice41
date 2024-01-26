@@ -12,14 +12,14 @@ namespace practice.Models
         [Required]
         [StringLength(100)]
         public string Mail { get; set; }
-        public DateTime? Birthday { get; set; }
+        public DateOnly? Birthday { get; set; }
 
         [Required]
         public int? CountryID { get; set; }
         public Country Country { get; set; }
 
         [StringLength(20)]
-        public int? Phone { get; set; }
+        public string? Phone { get; set; }
 
         [Required]
         [StringLength(50)]

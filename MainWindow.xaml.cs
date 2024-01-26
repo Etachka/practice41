@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using practice.Parser;
 using practice.Forms;
+using practice.Database;
+
 namespace practice
 {
     /// <summary>
@@ -24,7 +26,21 @@ namespace practice
         public MainWindow()
         {
             InitializeComponent();
-            Parser.Parser.ParseCity();
+            Pars.ParseCity();
+            Pars.ParseCountry();
+            Pars.ParseDirection();
+            Pars.ParseAction();
+            Pars.ParseEvent();
+            Pars.ParseActivitiesInformationSecurity();
+            Pars.ParseJury();
+            Pars.ParseParticipant();
+            Pars.ParseActionJury();
+            Pars.ParseModerator();
+            Pars.ParseOrganizers();
+            using(var con = new PracticeContext())
+            {
+                IC.ItemsSource = con.Ivent.ToList();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

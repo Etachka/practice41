@@ -15,7 +15,7 @@ namespace practice.Models
 
         [StringLength(500)]
         public string? Ivent { get; set; }
-        public DateTime? Data { get; set; }
+        public DateOnly? Data { get; set; }
         public int? Days { get; set; }
 
         [Required]

@@ -56,11 +56,28 @@ namespace practice.Forms
         {
             Captcha captcha = new Captcha();
             captcha.ShowDialog();
-            if(password.Text == "1")
+            switch (password.Text)
             {
-                Organizator organizator = new Organizator();
-                organizator.Show();
-                this.Close();
+                case "1":
+                    Organizator organizator = new Organizator();
+                    organizator.Show();
+                    this.Close();
+                    break;
+                case "2":
+                    Jury jury = new Jury();
+                    jury.Show();
+                    this.Close();
+                    break;
+                case "3":
+                    Moderator mod = new Moderator();
+                    mod.Show();
+                    this.Close();
+                    break;
+                case "4":
+                    ParticipantWindow participant = new ParticipantWindow();
+                    participant.Show();
+                    this.Close();
+                    break;
             }
         }
 
@@ -71,6 +88,11 @@ namespace practice.Forms
             {
                 e.Handled = true;
             }
+        }
+
+        private void password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

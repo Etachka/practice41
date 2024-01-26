@@ -9,9 +9,6 @@ namespace practice.Models
         public int Id { get; set; }
 
         [Required]
-        public string HyperAddress { get; set; }
-
-        [Required]
         public string CityName { get; set; }
     }
 }
