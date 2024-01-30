@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using practice.Parser;
 using practice.Forms;
 using practice.Database;
+using practice.Models;
 
 namespace practice
 {
@@ -23,24 +23,18 @@ namespace practice
     /// </summary>
     public partial class MainWindow : Window
     {
+        PracticeContext db;
+        List<string> strings = new List<string>() { "A-Я", "Я-А", "По возрастанию", "По убыванию" };
+        List<Ivent> ivents = new List<Ivent>();
         public MainWindow()
         {
+            db = new PracticeContext();
             InitializeComponent();
-            Pars.ParseCity();
-            Pars.ParseCountry();
-            Pars.ParseDirection();
-            Pars.ParseAction();
-            Pars.ParseEvent();
-            Pars.ParseActivitiesInformationSecurity();
-            Pars.ParseJury();
-            Pars.ParseParticipant();
-            Pars.ParseActionJury();
-            Pars.ParseModerator();
-            Pars.ParseOrganizers();
-            using(var con = new PracticeContext())
-            {
-                IC.ItemsSource = con.Ivent.ToList();
-            }
+            ivents = db.Ivents.ToList();
+            IC.ItemsSource = ivents;
+
+
+            SortNameIvents.ItemsSource = strings;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -71,6 +65,38 @@ namespace practice
         private void mainBrdAuth_MouseLeave(object sender, MouseEventArgs e)
         {
             mainBrdAuth.BorderBrush = new SolidColorBrush(Colors.Black);
+
+        }
+        private void SortNameIvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (SortNameIvents.SelectedItem)
+            {
+                case "A-Я":
+                    {
+                        ivents = db.Ivents.OrderBy(p => p.Name).ToList();
+                        IC.ItemsSource = ivents;
+                        break;
+                    }
+                case "Я-А":
+                    {
+                        ivents = db.Ivents.OrderByDescending(p => p.Name).ToList();
+                        IC.ItemsSource = ivents;
+                        break;
+                    }
+                case "По возрастанию":
+                    {
+                        ivents = db.Ivents.OrderBy(p => p.DateBegin).ToList();
+                        IC.ItemsSource = ivents;
+                        break;
+                    }
+                case "По убыванию":
+                    {
+                        ivents = db.Ivents.OrderByDescending(p => p.DateBegin).ToList();
+                        IC.ItemsSource = ivents;
+                        break;
+                    }
+
+            }
 
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using practice.Models;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +19,15 @@ namespace practice.Forms
     /// <summary>
     /// Логика взаимодействия для Organizator.xaml
     /// </summary>
+    ///
     public partial class Organizator : Window
     {
-        public Organizator()
+        public User User { get; set; }
+
+        public Organizator(User user)
         {
+            this.DataContext = this;
+            User = user;
             InitializeComponent();
         }
 
@@ -35,7 +42,7 @@ namespace practice.Forms
             Profile profile = new Profile();
             profile.ShowDialog();
         }
-
+            
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Participant participant = new Participant();
@@ -53,6 +60,39 @@ namespace practice.Forms
             Autorization autorization = new Autorization(); 
             autorization.Show();
             this.Close();
+        }
+        public string MrMrs
+        {
+            get
+            {
+                if (User.Gender.Equals("женский"))
+                {
+                    return "Mrs.";
+                }
+                return "Mr.";
+            }
+        }
+        public string WelcomDatePart
+        {
+            get
+            {
+                if (DateTime.Now.TimeOfDay > new TimeSpan(18, 0, 0))
+                {
+                    return "Добрый вечер";
+                }
+                if (DateTime.Now.TimeOfDay > new TimeSpan(11, 0, 0))
+                {
+                    return "Добрый день";
+                }
+                if (DateTime.Now.TimeOfDay > new TimeSpan(5, 0, 0))
+                {
+                    return "Доброе утро";
+                }
+                else
+                {
+                    return "Доброй ночи";
+                }
+            }
         }
     }
 }

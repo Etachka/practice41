@@ -1,4 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+
+using practice.Database;
+using practice.Models;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +25,10 @@ namespace practice.Forms
     /// </summary>
     public partial class Autorization : Window
     {
+        PracticeContext db;
         public Autorization()
         {
+            db = new PracticeContext();
             InitializeComponent();
         }
 
@@ -56,28 +64,44 @@ namespace practice.Forms
         {
             Captcha captcha = new Captcha();
             captcha.ShowDialog();
-            switch (password.Text)
+            User user = SignUp();
+            if (user == null)
             {
-                case "1":
-                    Organizator organizator = new Organizator();
-                    organizator.Show();
-                    this.Close();
-                    break;
-                case "2":
-                    Jury jury = new Jury();
-                    jury.Show();
-                    this.Close();
-                    break;
-                case "3":
-                    Moderator mod = new Moderator();
-                    mod.Show();
-                    this.Close();
-                    break;
-                case "4":
-                    ParticipantWindow participant = new ParticipantWindow();
-                    participant.Show();
-                    this.Close();
-                    break;
+                return;
+            }
+
+            Window windowToOpen;
+            switch (user.Role.Name)
+            {
+                case "Организатор":
+                    {
+                        windowToOpen = new Organizator(user);
+                        break;
+                    }
+                case "Модератор":
+                    {
+                        windowToOpen = new Moderator();
+                        break;
+                    }
+                case "Жюри":
+                    {
+                        windowToOpen = new Jury();
+                        break;
+                    }
+                default:
+                    {
+                        windowToOpen = new MainWindow();
+                        break;
+                    }
+            }
+            windowToOpen.Show();
+
+            foreach (Window w in App.Current.Windows)
+            {
+                if (w != windowToOpen)
+                {
+                    w.Close();
+                }
             }
         }
 
@@ -93,6 +117,16 @@ namespace practice.Forms
         private void password_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private User SignUp()
+        {
+            if (txtID.Text.IsNullOrEmpty() || password.Password.IsNullOrEmpty())
+            {
+                return null;
+            }
+            User user = db.Users.Include(u => u.Role).Where(p => p.Id == Convert.ToInt32(txtID.Text) && p.Password == password.Password).FirstOrDefault();
+            return user;
         }
     }
 }

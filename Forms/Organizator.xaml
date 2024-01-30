@@ -79,7 +79,7 @@
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" BorderThickness="1" BorderBrush="#c6c682" Margin="30 10 30 10">
-                    <TextBlock Text="ФОТО" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                    <Image x:Name="ImageBox" Stretch="UniformToFill" Source="{Binding User.Photo}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Image>
                 </Border>
                 <Border Grid.Row="1" BorderThickness="1" BorderBrush="#c6c682" Margin="30 20 30 20" CornerRadius="10">
                     <Button Style="{DynamicResource ButtonStyle1}" Content="Мой профиль" Background="Transparent" BorderBrush="Transparent" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
@@ -93,8 +93,13 @@
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Доброе утро/день/вечер!" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Bottom"/>
-                <TextBlock Grid.Row="1" Text="Ms/Mrs Имя" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Row="0" Text="{Binding WelcomDatePart}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    
+                    <TextBlock Text="{Binding MrMrs}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10px 0"/>
+                    <TextBlock Text="{Binding User.Name}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold"/>
+                </StackPanel>
+                
                 <Border Grid.Row="2" BorderThickness="1" BorderBrush="DarkGray" Margin="45 2.5 45 2.5" CornerRadius="14">
                     <Button Style="{DynamicResource ButtonStyle1}" Content="Мероприятия" FontSize="16" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Click="Button_Click_3"/>
                 </Border>

@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:practice.Forms"
         mc:Ignorable="d"
-        Title="JuryModeratorRegistration" Height="450" Width="800" Icon="/пципиа.png" WindowStartupLocation="CenterScreen">
+        Title="JuryModeratorRegistration" Height="500" Width="800" Icon="/пципиа.png" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -84,42 +84,38 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
-                    <RowDefinition Height="1.2*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Id Number:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="ФИО:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Пол:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Роль:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="Email:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-                <TextBlock Grid.Row="5" Grid.Column="0" Text="Телефон:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-                <TextBlock Grid.Row="6" Grid.Column="0" Text="Направление:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-                <TextBlock Grid.Row="8" Grid.Column="0" Text="Мероприятие:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-                <TextBox  Grid.Row="0" Grid.Column="1" Margin="5 0 5 20" IsEnabled="False"/>
-                <TextBox  Grid.Row="1" Grid.Column="1" Margin="5 0 5 20" PreviewTextInput="TextBox_PreviewTextInput"/>
-                <ComboBox  Grid.Row="2" Grid.Column="1" Margin="5 0 5 20">
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Фамилия:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Имя:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Отчество:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Пол:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Роль:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="Email:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="Телефон:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <TextBlock x:Name="IventTxt" Grid.Row="7" Grid.Column="0" Text="Мероприятие:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <TextBlock x:Name="ActivityTxt" Grid.Row="8" Grid.Column="0" Text="Направление:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+
+                <TextBox x:Name="SurnameTxt" Grid.Row="0" Grid.Column="1" Margin="5 0 5 20" PreviewTextInput="TextBox_PreviewTextInput"/>
+                <TextBox x:Name="NameTxt" Grid.Row="1" Grid.Column="1" Margin="5 0 5 20" PreviewTextInput="TextBox_PreviewTextInput"/>
+                <TextBox x:Name="PatronomicTxt" Grid.Row="2" Grid.Column="1" Margin="5 0 5 20" PreviewTextInput="TextBox_PreviewTextInput"/>
+                <ComboBox x:Name="GenderCB" Grid.Row="3" Grid.Column="1" Margin="5 0 5 20" SelectionChanged="ComboBox_SelectionChanged">
                     <ComboBoxItem Content="Мужской"/>
-                    <ComboBoxItem Content="Не мужской"/>
+                    <ComboBoxItem Content="Женский"/>
                 </ComboBox>
-                <ComboBox  Grid.Row="3" Grid.Column="1" Margin="5 0 5 20">
-                    <ComboBoxItem Content="Жюри"/>
-                    <ComboBoxItem Content="Модератор"/>
-                </ComboBox>
-                <TextBox  Grid.Row="4" Grid.Column="1" Margin="5 0 5 20"/>
-                <xctk:MaskedTextBox  Grid.Row="5" Grid.Column="1" Margin="5 0 5 20" Mask="+7(000)-000-00-00"
+                <ComboBox x:Name="RoleCB" Grid.Row="4" Grid.Column="1" Margin="5 0 5 20" SelectionChanged="RoleCB_SelectionChanged"/>
+
+                <TextBox x:Name="EmailTxt" Grid.Row="5" Grid.Column="1" Margin="5 0 5 20"/>
+
+                <xctk:MaskedTextBox x:Name="PhoneTxt" Grid.Row="6" Grid.Column="1" Margin="5 0 5 20" Mask="+7(000)-000-00-00"
                               TextChanged="TextBox_TextChanged"/>
-                <TextBox  Grid.Row="6" Grid.Column="1" Margin="5 2 5 2"/>
-                <Grid Grid.Row="7" Grid.Column="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="80*"/>
-                    </Grid.ColumnDefinitions>
-                    <CheckBox Grid.Column="0" Margin="50 3 0 0"/>
-                    <TextBlock Grid.Column="1" Text="Прикрепить к мероприятию" Foreground="DimGray" VerticalAlignment="Center" Margin="5 0 0 0"/>
-                </Grid>
-                <ComboBox  Grid.Row="8" Grid.Column="1" Margin="5 0 5 20">
-                </ComboBox>
+                
+                
+                <ComboBox x:Name="IventCB" Grid.Row="7" Grid.Column="1" Margin="5 0 5 20" SelectionChanged="IventCB_SelectionChanged"/>
+                <ComboBox x:Name="ActivityCB" Grid.Row="8" Grid.Column="1" Margin="5 0 5 20"/>
+
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>

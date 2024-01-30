@@ -1,5 +1,11 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+
+using practice.Database;
+using practice.Models;
+
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +25,35 @@ namespace practice.Forms
     /// </summary>
     public partial class JuryModeratorRegistration : Window
     {
+        PracticeContext db;
+        List<Role> roles = new();
+        List<string> strRoles;
+        User user = new User();
+
         public JuryModeratorRegistration()
         {
+            db = new PracticeContext();
+            roles = db.Roles.ToList();
+            strRoles = new List<string>();
+            foreach (Role role in roles)
+            {
+                strRoles.Add(role.Name);
+            }
             InitializeComponent();
+            RoleCB.ItemsSource = strRoles;
+            IventCB.ItemsSource = GetIvents();
+        }
 
+
+        public ObservableCollection<Ivent> GetIvents()
+        {
+            return new ObservableCollection<Ivent>(
+                    db.Ivents.ToList<Ivent>());
+        }
+        public ObservableCollection<Activity> GetActivites()
+        {
+            return new ObservableCollection<Activity>(
+                    db.Activites.Where(p => p.IventId == IventCB.SelectedIndex + 1).ToList<Activity>());
         }
 
         private void pass_check_Checked(object sender, RoutedEventArgs e)
@@ -61,18 +92,117 @@ namespace practice.Forms
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if(Char.IsDigit(e.Text,0))
+            if (Char.IsDigit(e.Text, 0))
             { e.Handled = true; }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            user.Surname = SurnameTxt.Text;
+            user.Name = NameTxt.Text;
+            user.Patronomic = PatronomicTxt.Text;
+            user.Phone = PhoneTxt.Text;
+            user.Email = EmailTxt.Text;
+            if(pass_check.IsChecked==true)
+            {
+                user.Password = passBoxTxt.Text;
+            }
+            else
+            {
+                user.Password = passBox.Password;
+            }
+            
+
+            if (Check())
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(
+        "Заполните все поля",
+        "Сообщение");
+            }
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private void RoleCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (RoleCB.SelectedIndex)
+            {
+                case 0:
+                    {
+                        user.RoleId = RoleCB.SelectedIndex + 1;
+                        break;
+                    }
+                case 1:
+                    {
+                        user.RoleId = RoleCB.SelectedIndex + 1;
+                        break;
+
+                    }
+                case 2:
+                    {
+                        user.RoleId = RoleCB.SelectedIndex + 1;
+                        break;
+                    }
+                case 3:
+                    {
+                        user.RoleId = RoleCB.SelectedIndex + 1;
+
+                        break;
+                    }
+            }
+
+        }
+        private bool Check()
+        {
+            if (SurnameTxt.Text.IsNullOrEmpty() ||
+                NameTxt.Text.IsNullOrEmpty() ||
+                PatronomicTxt.Text.IsNullOrEmpty() ||
+                PhoneTxt.Text.IsNullOrEmpty() ||
+                EmailTxt.Text.IsNullOrEmpty() ||
+                passBox.Password.IsNullOrEmpty() ||
+                passBox.Password.Length < 6 &&
+                passBox.Password != @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).+$" ||
+                passBoxTxt.Text.Length < 6 &&
+                passBoxTxt.Text != @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).+$" ||
+                passBox.Password != passBox2.Password
+                )
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (GenderCB.SelectedIndex)
+            {
+                case 0:
+                    {
+                        user.Gender = "мужской";
+                        break;
+                    }
+                case 1:
+                    {
+                        user.Gender = "женский";
+                        break;
+                    }
+            }
+        }
+
+        private void IventCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var activites = GetActivites();
+            ActivityCB.ItemsSource = activites;
         }
     }
 }
