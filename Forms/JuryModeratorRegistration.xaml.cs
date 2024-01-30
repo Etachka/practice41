@@ -173,7 +173,8 @@ namespace practice.Forms
                 passBox.Password != @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).+$" ||
                 passBoxTxt.Text.Length < 6 &&
                 passBoxTxt.Text != @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).+$" ||
-                passBox.Password != passBox2.Password
+                passBox.Password != passBox2.Password ||
+                passBoxTxt.Text != passBoxTxt2.Text
                 )
             {
                 return false;
