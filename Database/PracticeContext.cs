@@ -49,7 +49,7 @@ namespace practice.Database
                   .SelectMany(e => e.GetProperties())
                   .Where(p => p.ClrType == typeof(DateTime));
 
-            modelBuilder.HasDefaultSchema("Davydov-Nurmuhamedov-Aliev");
+            modelBuilder.HasDefaultSchema("Davyvy_Nurmum_Alivi");
 
             foreach (var property in dateTimeProperties)
             {

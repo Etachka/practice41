@@ -33,7 +33,7 @@ namespace practice.Forms
         public JuryModeratorRegistration()
         {
             db = new PracticeContext();
-            roles = db.Roles.Where(x => x.Name == "Модератор" || x.Name == "Жюри").ToList();
+            roles = db.Roles.Where(x=>x.Name == "Жюри" || x.Name == "Модератор").ToList();
             strRoles = new List<string>();
             foreach (Role role in roles)
             {
