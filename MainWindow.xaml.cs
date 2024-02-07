@@ -24,7 +24,7 @@ namespace practice
     public partial class MainWindow : Window
     {
         PracticeContext db;
-        List<string> strings = new List<string>() { "A-Я", "Я-А", "По возрастанию", "По убыванию" };
+        List<string> strings = new List<string>() { "A-Я", "Я-А", "Сначала старые", "Сначала новые" };
         List<Ivent> ivents = new List<Ivent>();
         public MainWindow()
         {
@@ -83,13 +83,13 @@ namespace practice
                         IC.ItemsSource = ivents;
                         break;
                     }
-                case "По возрастанию":
+                case "Сначала старые":
                     {
                         ivents = db.Ivents.OrderBy(p => p.DateBegin).ToList();
                         IC.ItemsSource = ivents;
                         break;
                     }
-                case "По убыванию":
+                case "Сначала новые":
                     {
                         ivents = db.Ivents.OrderByDescending(p => p.DateBegin).ToList();
                         IC.ItemsSource = ivents;

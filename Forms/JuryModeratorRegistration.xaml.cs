@@ -103,10 +103,12 @@ namespace practice.Forms
             user.Patronomic = PatronomicTxt.Text;
             user.Phone = PhoneTxt.Text;
             user.Email = EmailTxt.Text;
+
             if(pass_check.IsChecked==true)
             {
                 user.Password = passBoxTxt.Text;
             }
+
             else
             {
                 user.Password = passBox.Password;
@@ -119,13 +121,11 @@ namespace practice.Forms
                 db.SaveChanges();
                 this.Close();
             }
+
             else
             {
-                MessageBox.Show(
-        "Заполните все поля",
-        "Сообщение");
+                MessageBox.Show("Проверьте заполненность полей", "Сообщение");
             }
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -174,7 +174,8 @@ namespace practice.Forms
                 passBoxTxt.Text.Length < 6 &&
                 passBoxTxt.Text != @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).+$" ||
                 passBox.Password != passBox2.Password ||
-                passBoxTxt.Text != passBoxTxt2.Text
+                passBoxTxt.Text != passBoxTxt2.Text ||
+                PhoneTxt.Text.Contains("_")
                 )
             {
                 return false;

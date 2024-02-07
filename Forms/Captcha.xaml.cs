@@ -21,9 +21,6 @@ using System.Threading;
 
 namespace practice.Forms
 {
-    /// <summary>
-    /// Логика взаимодействия для Captcha.xaml
-    /// </summary>
     public partial class Captcha : Window
     {
         public Captcha()
@@ -31,6 +28,7 @@ namespace practice.Forms
             InitializeComponent();
             MyCaptcha.CreateCaptcha(EasyCaptcha.Wpf.Captcha.LetterOption.Alphanumeric, 4);         
         }
+
         private async Task<string> InitRecaptcha()
         {
             ReCaptchaConfig config = "6LeQelkpAAAAAJXVyaw3nBW7YIT61LGFPqU_wqlw".AsReCaptchaConfig("HOST_NAME", "en", "Token recieved: %token%", "Token recieved and sent to application.");
@@ -69,6 +67,13 @@ namespace practice.Forms
             {
                 this.Close();
             }
+
+            if (txtCapt.Text != answer)
+            {
+                MessageBox.Show("Неверно введена каптча!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MyCaptcha.CreateCaptcha(EasyCaptcha.Wpf.Captcha.LetterOption.Alphanumeric, 4);
+                return;
+            }
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -78,6 +83,11 @@ namespace practice.Forms
         private void txtCapt_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             
+        }
+
+        private void cptUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            MyCaptcha.CreateCaptcha(EasyCaptcha.Wpf.Captcha.LetterOption.Alphanumeric, 4);
         }
     }
 }
