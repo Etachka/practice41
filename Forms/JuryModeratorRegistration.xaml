@@ -131,7 +131,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="1" Text="Пароль:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0" />
                 <TextBlock Grid.Row="2" Text="Повтор пароля:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0" />
-                <CheckBox x:Name="pass_check" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0" Checked="pass_check_Checked" Click="pass_check_Click"/>
+                <CheckBox x:Name="pass_check" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0" Click="pass_check_Click"/>
                 <Border Grid.Row="0" Grid.Column="1" Margin="0 4 10 20" BorderBrush="DarkGray" BorderThickness="1">
                     <Image />
                 </Border>

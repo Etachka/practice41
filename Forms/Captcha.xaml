@@ -64,7 +64,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Loaded="Grid_Loaded">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
@@ -81,9 +81,8 @@
         </Grid.ColumnDefinitions>
         <easy:Captcha Grid.Row="1" Grid.Column="1"  x:Name="MyCaptcha" Margin="20 0 20 0"/>
         <Button x:Name="cptUpdate" Grid.Column="2" Grid.Row="1" Background="Transparent" Content="Обновить" Click="cptUpdate_Click"/>
-        <!--<ui:ReCaptcha Grid.Row="1" Grid.Column="1" x:Name="sus" Title="123"></ui:ReCaptcha>-->
         
-        <TextBox x:Name="txtCapt" Grid.Row="3" Grid.Column="1"  Margin="20 0 20 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" PreviewTextInput="txtCapt_PreviewTextInput"/>
+        <TextBox x:Name="txtCapt" Grid.Row="3" Grid.Column="1"  Margin="20 0 20 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
         <Border x:Name="brdCapt"  Grid.Column="1" Grid.Row="5"  Margin="50 5 50 5" BorderThickness="1" BorderBrush="black" CornerRadius="25" MouseEnter="brdCapt_MouseEnter" MouseLeave="brdCapt_MouseLeave">
             <Button x:Name="btnCapt" Style="{DynamicResource ButtonStyle1}" Grid.Row="5" Grid.Column="1" Content="Проверить" FontSize="20" Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="btnCapt_Click" />
         </Border>

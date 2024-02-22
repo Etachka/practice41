@@ -32,15 +32,10 @@ namespace practice.Forms
             InitializeComponent();
         }
 
-        private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
+        // обводка кнопки авторизации
         private void brdAuth_MouseEnter(object sender, MouseEventArgs e)
         {
             brdAuth.BorderBrush = new SolidColorBrush(Color.FromRgb(126, 180, 234));
-
         }
 
         private void brdAuth_MouseLeave(object sender, MouseEventArgs e)
@@ -48,18 +43,18 @@ namespace practice.Forms
             brdAuth.BorderBrush = new SolidColorBrush(Colors.Black);
         }
 
+        // текст кнопки авторизации
         private void btnAuth_MouseEnter(object sender, MouseEventArgs e)
         {
             btnAuth.Foreground = new SolidColorBrush(Color.FromRgb(126, 180, 234));
-
         }
 
         private void btnAuth_MouseLeave(object sender, MouseEventArgs e)
         {
             btnAuth.Foreground = new SolidColorBrush(Colors.Black);
-
         }
 
+        // авторизация 
         int count = 0;
         private void btnAuth_Click(object sender, RoutedEventArgs e)
         {
@@ -124,8 +119,8 @@ namespace practice.Forms
             }
         }
 
-
-        private void password_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        // проверка на ввод чисел в поле ввода id
+        private void txtID_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!Char.IsDigit(e.Text, 0))
             {
@@ -133,11 +128,7 @@ namespace practice.Forms
             }
         }
 
-        private void password_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
+        // метод авторизации
         private User SignUp()
         {
             
@@ -145,12 +136,13 @@ namespace practice.Forms
             {
                 MessageBox.Show("Поля для авторизации пустые","Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return null;
-            }
+            } 
             
             User user = db.Users.Include(u => u.Role).Where(p => p.Id == Convert.ToInt32(txtID.Text) && p.Password == password.Password).FirstOrDefault();
             return user;
         }
 
+        // таймер для блокировки авторизации при неверной каптче
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             Dispatcher.Invoke(() =>

@@ -33,7 +33,7 @@ namespace practice.Forms
         public JuryModeratorRegistration()
         {
             db = new PracticeContext();
-            roles = db.Roles.Where(x=>x.Name == "Жюри" || x.Name == "Модератор").ToList();
+            roles = db.Roles.Where(x => x.Name == "Жюри" || x.Name == "Модератор").ToList();
             strRoles = new List<string>();
             foreach (Role role in roles)
             {
@@ -50,15 +50,11 @@ namespace practice.Forms
             return new ObservableCollection<Ivent>(
                     db.Ivents.ToList<Ivent>());
         }
+
         public ObservableCollection<Activity> GetActivites()
         {
             return new ObservableCollection<Activity>(
                     db.Activites.Where(p => p.IventId == IventCB.SelectedIndex + 1).ToList<Activity>());
-        }
-
-        private void pass_check_Checked(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void pass_check_Click(object sender, RoutedEventArgs e)
@@ -104,7 +100,7 @@ namespace practice.Forms
             user.Phone = PhoneTxt.Text;
             user.Email = EmailTxt.Text;
 
-            if(pass_check.IsChecked==true)
+            if (pass_check.IsChecked == true)
             {
                 user.Password = passBoxTxt.Text;
             }
@@ -113,7 +109,7 @@ namespace practice.Forms
             {
                 user.Password = passBox.Password;
             }
-            
+
 
             if (Check())
             {

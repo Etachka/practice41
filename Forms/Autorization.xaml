@@ -83,7 +83,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="0" Text="Авторизация" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Grid.Column="1" Grid.Row="2" Text="ID пользователя" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
-        <TextBox x:Name="txtID" Grid.Column="1" Grid.Row="3" Margin="5 10 5 10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="password_PreviewTextInput"/>
+        <TextBox x:Name="txtID" Grid.Column="1" Grid.Row="3" Margin="5 10 5 10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="txtID_PreviewTextInput"/>
         <TextBlock Grid.Column="1" Grid.Row="4" Text="Пароль" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
         <PasswordBox x:Name="password" Grid.Column="1" Grid.Row="5" Margin="5 10 5 10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         
