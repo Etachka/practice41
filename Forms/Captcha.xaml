@@ -8,7 +8,7 @@
         xmlns:ui="clr-namespace:ReCaptcha.Desktop.WPF.UI;assembly=ReCaptcha.Desktop.WPF"
         xmlns:themes="clr-namespace:ReCaptcha.Desktop.WPF.UI.Themes;assembly=ReCaptcha.Desktop.WPF"
         mc:Ignorable="d"
-        Title="Captcha" Height="400" Width="450" 
+        Title="Капча" Height="400" Width="450" 
         WindowStartupLocation="CenterScreen" Icon="/пципиа.png" 
         WindowStyle="None">
     <Window.Resources>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:practice.Forms"
         
         mc:Ignorable="d"
-        Title="Autorization" Height="700" Width="400" WindowStartupLocation="CenterScreen" Icon="/пципиа.png" >
+        Title="Авторизация" Height="700" Width="400" WindowStartupLocation="CenterScreen" Icon="/пципиа.png" >
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

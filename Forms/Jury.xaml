@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:practice.Forms"
         mc:Ignorable="d"
-        Title="Jury" Height="450" Width="800" Icon="/пципиа.png" >
+        Title="Жюри" Height="450" Width="800" Icon="/пципиа.png" >
     <Grid>
         
     </Grid>
