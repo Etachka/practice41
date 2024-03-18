@@ -27,7 +27,7 @@ namespace practice.Forms
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            Autorization autorization = new Autorization();
+            MainWindow autorization = new ();
             autorization.Show();
             this.Close();
         }

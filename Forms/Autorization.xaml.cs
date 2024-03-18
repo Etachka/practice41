@@ -99,7 +99,7 @@ namespace practice.Forms
                         }
                     case "Жюри":
                         {
-                            windowToOpen = new Jury();
+                            windowToOpen = new Jury(user);
                             break;
                         }
                     default:
