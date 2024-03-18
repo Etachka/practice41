@@ -40,8 +40,8 @@ namespace practice.Forms
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            EventWindow eventWindow = new EventWindow();
-            eventWindow.ShowDialog();
+            ActivitesAdd activitesAdd = new ActivitesAdd();
+            activitesAdd.ShowDialog();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
