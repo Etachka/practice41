@@ -103,12 +103,6 @@
     <None Remove="пципиа.png" />
   </ItemGroup>
 
-  
-  
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="EasyCaptcha.Wpf" Version="0.9.0.3" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />

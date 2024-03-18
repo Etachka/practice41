@@ -94,7 +94,7 @@ namespace practice.Forms
                         }
                     case "Модератор":
                         {
-                            windowToOpen = new Moderator();
+                            windowToOpen = new Moderator(user);
                             break;
                         }
                     case "Жюри":
@@ -104,7 +104,7 @@ namespace practice.Forms
                         }
                     default:
                         {
-                            windowToOpen = new MainWindow();
+                            windowToOpen = new MainWindow(user);
                             break;
                         }
                 }

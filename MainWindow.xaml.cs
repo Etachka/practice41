@@ -19,6 +19,7 @@ namespace practice
         private PracticeContext db;
         private List<string> strings = new List<string>() { "A-Я", "Я-А", "Сначала старые", "Сначала новые" };
         private List<Ivent> ivents = new List<Ivent>();
+        public User User { get; set; }
 
         public MainWindow()
         {
@@ -29,7 +30,24 @@ namespace practice
 
             SortNameIvents.ItemsSource = strings;
         }
-
+        public MainWindow(User user)
+        {
+            db = new PracticeContext();
+            InitializeComponent();
+            ivents = db.Ivents.ToList();
+            IC.ItemsSource = ivents;
+            User = user;
+            SortNameIvents.ItemsSource = strings;
+            if (user != null)
+            {
+                mainBtnAuth.Visibility = Visibility.Collapsed;
+                mainBrdAuth.Visibility = Visibility.Collapsed;
+                mainBrdProf.Visibility = Visibility.Visible;
+                mainBtnProf.Visibility = Visibility.Visible;
+                mainBtnExit.Visibility = Visibility.Visible;
+                mainBrdExit.Visibility = Visibility.Visible;
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Autorization autorization = new Autorization();
@@ -86,6 +104,19 @@ namespace practice
                         break;
                     }
             }
+        }
+
+        private void mainBtnProf_Click(object sender, RoutedEventArgs e)
+        {
+            Profile profile = new Profile(User);
+            profile.ShowDialog();
+        }
+
+        private void mainBtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Autorization autorization = new Autorization();
+            autorization.Show();
+            this.Close();
         }
     }
 }
