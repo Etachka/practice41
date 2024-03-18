@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="JuryModeratorRegistration" Height="500" Width="800" Icon="/пципиа.png" WindowStartupLocation="CenterScreen">
+        Title="Регистрация жюри и модераторов" Height="500" Width="800" Icon="/пципиа.png" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

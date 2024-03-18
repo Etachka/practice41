@@ -6,6 +6,7 @@ using practice.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -106,10 +107,6 @@ namespace practice.Forms
                 db.SaveChanges();
                 this.Close();
             }
-            else
-            {
-                MessageBox.Show("Проверьте заполненность полей", "Сообщение");
-            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -159,12 +156,26 @@ namespace practice.Forms
                 passBoxTxt.Text != @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).+$" ||
                 passBox.Password != passBox2.Password ||
                 passBoxTxt.Text != passBoxTxt2.Text ||
-                PhoneTxt.Text.Contains("_")
+                PhoneTxt.Text.Contains("_") 
                 )
             {
+                MessageBox.Show("Проверьте заполненность полей", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            return true;
+            if (db.Users.Any(x => x.Email == EmailTxt.Text))
+            {
+                MessageBox.Show("Пользователь с такой почтой уже существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;   
+            }
+            var email = EmailTxt.Text;
+            if (email.Contains("@"))
+                return true;
+            else 
+            {
+                MessageBox.Show("Вы потеряли собаку", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                return false;
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

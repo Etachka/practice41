@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:easy="clr-namespace:EasyCaptcha.Wpf;assembly=EasyCaptcha.Wpf"
         mc:Ignorable="d"
-        Title="Captcha" Height="400" Width="450"
-        WindowStartupLocation="CenterScreen" Icon="/пципиа.png"
+        Title="Капча" Height="400" Width="450" 
+        WindowStartupLocation="CenterScreen" Icon="/пципиа.png" 
         WindowStyle="None">
     <Window.Resources>
         <Style x:Key="FocusVisual">

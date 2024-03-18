@@ -37,7 +37,7 @@ namespace practice.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server=hnt8.ru;Port=5432;Database=AKVTCommonPractice;UserID=admin;Password=admin");
+            optionsBuilder.UseNpgsql("Server=hnt8.ru;Port=5432;Database=AKVTCommonPractice;UserID=postgres;Password=_RasulkotV2");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
