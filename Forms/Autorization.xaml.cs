@@ -49,11 +49,11 @@ namespace practice.Forms
         }
 
         // авторизация
-        private int count = 0;
+        private int count = 1;
 
         private void btnAuth_Click(object sender, RoutedEventArgs e)
         {
-            if (count >= 3)
+            if (count == 3)
             {
                 count = 0;
                 txtID.IsEnabled = false;
@@ -69,49 +69,56 @@ namespace practice.Forms
                 return;
             }
 
-            Captcha captcha = new Captcha();
-            captcha.ShowDialog();
+            
 
             User user = SignUp();
             if (user == null)
             {
                 count++;
+                MessageBox.Show("Неверно введены ID или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            Captcha captcha = new Captcha();
+            captcha.ShowDialog();
 
-            Window windowToOpen;
-            switch (user.Role.Name)
-            {
-                case "Организатор":
-                    {
-                        windowToOpen = new Organizator(user);
-                        break;
-                    }
-                case "Модератор":
-                    {
-                        windowToOpen = new Moderator();
-                        break;
-                    }
-                case "Жюри":
-                    {
-                        windowToOpen = new Jury();
-                        break;
-                    }
-                default:
-                    {
-                        windowToOpen = new MainWindow();
-                        break;
-                    }
-            }
-            windowToOpen.Show();
 
-            foreach (Window w in App.Current.Windows)
+            if (captcha.DialogResult == true)
             {
-                if (w != windowToOpen)
+                Window windowToOpen;
+                switch (user.Role.Name)
                 {
-                    w.Close();
+                    case "Организатор":
+                        {
+                            windowToOpen = new Organizator(user);
+                            break;
+                        }
+                    case "Модератор":
+                        {
+                            windowToOpen = new Moderator();
+                            break;
+                        }
+                    case "Жюри":
+                        {
+                            windowToOpen = new Jury();
+                            break;
+                        }
+                    default:
+                        {
+                            windowToOpen = new MainWindow();
+                            break;
+                        }
+                }
+                windowToOpen.Show();
+
+                foreach (Window w in App.Current.Windows)
+                {
+                    if (w != windowToOpen)
+                    {
+                        w.Close();
+                    }
                 }
             }
+            
         }
 
         // проверка на ввод чисел в поле ввода id
