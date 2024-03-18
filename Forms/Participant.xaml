@@ -3,8 +3,100 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Участники" Height="450" Width="800" Icon="/пципиа.png" >
+        Title="Добавление участника" Height="450" Width="800" Icon="/пципиа.png" >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Регистрация участника" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="52*" />
+                <ColumnDefinition Width="48*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Height="362" VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="7*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Фамилия:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Имя:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Отчество:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0" />
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Пол:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0" />
+                
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="Email:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0" />
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="Телефон:" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0" />
+                
+
+                <TextBox x:Name="SurnameTxt" Grid.Row="0" Grid.Column="1" Margin="5 0 5 20" PreviewTextInput="TextBox_PreviewTextInput" />
+                <TextBox x:Name="NameTxt" Grid.Row="1" Grid.Column="1" Margin="5 0 5 20" PreviewTextInput="TextBox_PreviewTextInput" />
+                <TextBox x:Name="PatronomicTxt" Grid.Row="2" Grid.Column="1" Margin="5 0 5 20" PreviewTextInput="TextBox_PreviewTextInput" />
+                <ComboBox x:Name="GenderCB" Grid.Row="3" Grid.Column="1" Margin="5 0 5 20" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Мужской" />
+                    <ComboBoxItem Content="Женский" />
+                </ComboBox>
+                
+
+                <TextBox x:Name="EmailTxt" Grid.Row="5" Grid.Column="1" Margin="5 0 5 20" />
+
+                <xctk:MaskedTextBox x:Name="PhoneTxt" Grid.Row="6" Grid.Column="1" Margin="5 0 5 20" Mask="+7(000)-000-00-00"
+                          TextChanged="TextBox_TextChanged" />
+
+                
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="16*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Text="Пароль:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0" />
+                <TextBlock Grid.Row="2" Text="Повтор пароля:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0" />
+                <CheckBox x:Name="pass_check" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0" Click="pass_check_Click" />
+                <Border Grid.Row="0" Grid.Column="1" Margin="0 4 10 20" BorderBrush="DarkGray" BorderThickness="1">
+                    <Image />
+                </Border>
+                <TextBox x:Name="passBoxTxt2" Grid.Row="1" Grid.Column="1" Margin="5 2 2 4" Text="Password" FontSize="16" Foreground="DarkGray" Visibility="Hidden" />
+                <PasswordBox x:Name="passBox2" Grid.Row="1" Grid.Column="1" Margin="5 2 2 4" Password="Password" PasswordChar="*" FontSize="16" Foreground="DarkGray" />
+                <TextBox x:Name="passBoxTxt" Grid.Row="2" Grid.Column="1" Margin="5 4 2 2" Text="Re-enter password" FontSize="16" Foreground="DarkGray" Visibility="Hidden" />
+                <PasswordBox x:Name="passBox" Grid.Row="2" Grid.Column="1" Margin="5 4 2 2" Password="Re-enter password" PasswordChar="*" FontSize="16" Foreground="DarkGray" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="Видимый Пароль" VerticalAlignment="Center" Margin="5 0 0 0 " FontSize="16" Foreground="DimGray" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="700*" />
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="1" BorderBrush="DimGray" BorderThickness="1" CornerRadius="7" Margin="0 0 5 5">
+                <Button Background="Transparent" BorderBrush="Transparent" Content="Ок" FontSize="16" FontWeight="Bold" Click="Button_Click" />
+            </Border>
+            <Border Grid.Column="2" BorderBrush="DimGray" BorderThickness="1" CornerRadius="7" Margin="5 0 0 5">
+                <Button Background="Transparent" BorderBrush="Transparent" Content="Отмена" FontSize="16" FontWeight="Bold" Click="Button_Click_1" />
+            </Border>
+        </Grid>
     </Grid>
 </Window>
