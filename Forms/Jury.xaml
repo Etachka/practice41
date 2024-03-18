@@ -6,5 +6,12 @@
         mc:Ignorable="d"
         Title="Жюри" Height="450" Width="800" Icon="/пципиа.png" >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="Black">
+            <TextBlock Text="Окно жюри" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" VerticalAlignment="Center" />
+        </Border>
     </Grid>
 </Window>

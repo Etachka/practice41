@@ -11,7 +11,54 @@
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="Black">
-            <TextBlock Text="Окно Модератора" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" VerticalAlignment="Center" />
+            <TextBlock Text="Окно модератора" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" VerticalAlignment="Center" />
         </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" MaxWidth="320" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <ScrollViewer>
+                    <ItemsControl x:Name="IC" Margin=" 0 0 5 0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Grid.Row="0" Grid.Column="1" Margin="0 5 0 0" Padding="10 5 10 10" BorderBrush="DarkGray" BorderThickness="1" CornerRadius="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="8*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="3*" />
+                                                <RowDefinition Height="3*" />
+                                                <RowDefinition Height="3*" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" Text="{Binding Path=Name}" />
+                                            <TextBlock Grid.Row="2" Text="{Binding Path=Surname}" />
+                                            <TextBlock Grid.Row="2" Text="{Binding Path=Patronomic}" />
+                                            <TextBlock Grid.Row="2" Text="{Binding Path=Gender}" />
+                                            <TextBlock Grid.Row="2" Text="{Binding Path=Phone}" />
+                                        </Grid>
+                                        <Image Grid.Column="0" Source="{Binding Photo}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="17*" />
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
