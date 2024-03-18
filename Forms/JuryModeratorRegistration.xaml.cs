@@ -7,16 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace practice.Forms
 {
@@ -25,10 +18,10 @@ namespace practice.Forms
     /// </summary>
     public partial class JuryModeratorRegistration : Window
     {
-        PracticeContext db;
-        List<Role> roles = new();
-        List<string> strRoles;
-        User user = new User();
+        private PracticeContext db;
+        private List<Role> roles = new();
+        private List<string> strRoles;
+        private User user = new User();
 
         public JuryModeratorRegistration()
         {
@@ -43,7 +36,6 @@ namespace practice.Forms
             RoleCB.ItemsSource = strRoles;
             IventCB.ItemsSource = GetIvents();
         }
-
 
         public ObservableCollection<Ivent> GetIvents()
         {
@@ -83,7 +75,6 @@ namespace practice.Forms
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
         }
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -104,12 +95,10 @@ namespace practice.Forms
             {
                 user.Password = passBoxTxt.Text;
             }
-
             else
             {
                 user.Password = passBox.Password;
             }
-
 
             if (Check())
             {
@@ -117,7 +106,6 @@ namespace practice.Forms
                 db.SaveChanges();
                 this.Close();
             }
-
             else
             {
                 MessageBox.Show("Проверьте заполненность полей", "Сообщение");
@@ -128,6 +116,7 @@ namespace practice.Forms
         {
             this.Close();
         }
+
         private void RoleCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (RoleCB.SelectedIndex)
@@ -141,7 +130,6 @@ namespace practice.Forms
                     {
                         user.RoleId = RoleCB.SelectedIndex + 1;
                         break;
-
                     }
                 case 2:
                     {
@@ -155,8 +143,8 @@ namespace practice.Forms
                         break;
                     }
             }
-
         }
+
         private bool Check()
         {
             if (SurnameTxt.Text.IsNullOrEmpty() ||
@@ -178,7 +166,6 @@ namespace practice.Forms
             }
             return true;
         }
-
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

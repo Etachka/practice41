@@ -1,22 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+
 using practice.Database;
 using practice.Models;
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Timers;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace practice.Forms
 {
@@ -25,7 +18,8 @@ namespace practice.Forms
     /// </summary>
     public partial class Autorization : Window
     {
-        PracticeContext db;
+        private PracticeContext db;
+
         public Autorization()
         {
             db = new PracticeContext();
@@ -54,8 +48,9 @@ namespace practice.Forms
             btnAuth.Foreground = new SolidColorBrush(Colors.Black);
         }
 
-        // авторизация 
-        int count = 0;
+        // авторизация
+        private int count = 0;
+
         private void btnAuth_Click(object sender, RoutedEventArgs e)
         {
             if (count >= 3)
@@ -131,13 +126,12 @@ namespace practice.Forms
         // метод авторизации
         private User SignUp()
         {
-            
             if (txtID.Text.IsNullOrEmpty() || password.Password.IsNullOrEmpty())
             {
-                MessageBox.Show("Поля для авторизации пустые","Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Поля для авторизации пустые", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return null;
-            } 
-            
+            }
+
             User user = db.Users.Include(u => u.Role).Where(p => p.Id == Convert.ToInt32(txtID.Text) && p.Password == password.Password).FirstOrDefault();
             return user;
         }

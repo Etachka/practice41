@@ -1,18 +1,7 @@
 ﻿using practice.Models;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace practice.Forms
 {
@@ -42,7 +31,7 @@ namespace practice.Forms
             Profile profile = new Profile();
             profile.ShowDialog();
         }
-            
+
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Participant participant = new Participant();
@@ -57,10 +46,11 @@ namespace practice.Forms
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            Autorization autorization = new Autorization(); 
+            Autorization autorization = new Autorization();
             autorization.Show();
             this.Close();
         }
+
         public string MrMrs
         {
             get
@@ -72,6 +62,7 @@ namespace practice.Forms
                 return "Mr.";
             }
         }
+
         public string WelcomDatePart
         {
             get
