@@ -69,7 +69,8 @@ namespace practice.Forms
                 return;
             }
 
-            
+            Captcha captcha = new Captcha();
+            captcha.ShowDialog();
 
             User user = SignUp();
             if (user == null)
@@ -78,8 +79,7 @@ namespace practice.Forms
                 MessageBox.Show("Неверно введены ID или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            Captcha captcha = new Captcha();
-            captcha.ShowDialog();
+            
 
 
             if (captcha.DialogResult == true)
