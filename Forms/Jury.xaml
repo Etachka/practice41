@@ -13,5 +13,74 @@
         <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="Black">
             <TextBlock Text="Окно жюри" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" VerticalAlignment="Center" />
         </Border>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <ItemsControl x:Name="IC" Margin=" 0 0 5 0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Grid.Row="0" Grid.Column="1" Margin="15" Padding="10 5 10 10" BorderBrush="DarkGray" BorderThickness="1" CornerRadius="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Name="TxtName" Text="{Binding Path=Name}"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Name="TxtDure" Text="Продолжительность:"/>
+                                        <TextBlock Grid.Column="1" Name="TxtDureBind" Text="{Binding Path=DayNumber}"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Дата начала:"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Path=TimeBegin}"/>
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Модератор:"/>
+                                        <TextBlock Grid.Column="1" Text=""/>
+                                    </Grid>
+                                    <Grid Grid.Row="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="События:"/>
+                                        <ComboBox Grid.Column="1" />
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Window>
