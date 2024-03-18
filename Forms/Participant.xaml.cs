@@ -67,7 +67,7 @@ namespace practice.Forms
             user.Patronomic = PatronomicTxt.Text;
             user.Phone = PhoneTxt.Text;
             user.Email = EmailTxt.Text;
-
+            user.RoleId = 4;
             if (pass_check.IsChecked == true)
             {
                 user.Password = passBoxTxt.Text;
@@ -81,6 +81,7 @@ namespace practice.Forms
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+                MessageBox.Show("Добавлено", "Отлично", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
         }
