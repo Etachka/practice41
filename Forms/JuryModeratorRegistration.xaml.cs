@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -168,14 +169,19 @@ namespace practice.Forms
                 return false;   
             }
             var email = EmailTxt.Text;
-            if (email.Contains("@"))
+            if (IsValidEmail(email))
                 return true;
             else 
             {
-                MessageBox.Show("Вы потеряли собаку", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                MessageBox.Show("Некорректно введена почта", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            return Regex.IsMatch(email, pattern);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
