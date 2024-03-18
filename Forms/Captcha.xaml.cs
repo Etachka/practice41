@@ -18,6 +18,7 @@ namespace practice.Forms
         {
             InitializeComponent();
             MyCaptcha.CreateCaptcha(EasyCaptcha.Wpf.Captcha.LetterOption.Alphanumeric, 4);
+
         }
 
         // каптча
@@ -52,16 +53,17 @@ namespace practice.Forms
             btnCapt.Foreground = new SolidColorBrush(Colors.Black);
         }
 
-        private int count = 0;
+        private int count = 1;
 
         // метод кнопки каптчи
         private void btnCapt_Click(object sender, RoutedEventArgs e)
         {
-            if (count >= 3)
+            if (count == 3)
             {
                 count = 0;
                 txtCapt.IsEnabled = false;
                 btnCapt.Visibility = Visibility.Hidden;
+                brdCapt.Visibility = Visibility.Hidden;
                 cptUpdate.Visibility = Visibility.Hidden;
 
                 MessageBox.Show("Слишком много запросов, повторите попытку через 10 секнуд", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -76,7 +78,9 @@ namespace practice.Forms
             var answer = MyCaptcha.CaptchaText;
             if (txtCapt.Text == answer)
             {
+                DialogResult = true;
                 this.Close();
+                
             }
 
             if (txtCapt.Text != answer)
@@ -99,9 +103,10 @@ namespace practice.Forms
         {
             Dispatcher.Invoke(() =>
             {
-                txtCapt.IsEnabled = false;
-                btnCapt.Visibility = Visibility.Hidden;
-                cptUpdate.Visibility = Visibility.Hidden;
+                txtCapt.IsEnabled = true;
+                btnCapt.Visibility = Visibility.Visible;
+                brdCapt.Visibility = Visibility.Visible;
+                cptUpdate.Visibility = Visibility.Visible;
             });
         }
     }
