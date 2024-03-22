@@ -1,45 +1,44 @@
 ﻿<Window x:Class="practice.Forms.ActivitesAdd"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:practice.Forms"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Добавление активности" Height="500" Width="800" Icon="/пципиа.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition/>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition/>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition/>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition/>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Добавление активности" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock Grid.Row="1" Text="Название активности" VerticalAlignment="Bottom"/>
-            <TextBox x:Name="TBName" Grid.Row="2" Margin="5 15"/>
-            <TextBlock Grid.Row="3" Text="Продолжительность активности (в днях)" VerticalAlignment="Bottom"/>
-            <TextBox x:Name="TBDur" Grid.Row="4" Margin="5 15" PreviewTextInput="TBDur_PreviewTextInput"/>
-            <TextBlock Grid.Row="5" Text="Время начала активности" VerticalAlignment="Bottom"/>
-            <DatePicker Name="DP" Grid.Row="6" Margin="5 10"  DisplayDateStart="{x:Static sys:DateTime.Today}" PreviewTextInput="DP_PreviewTextInput"/>
-            <TextBlock Grid.Row="7" Text="Привязать модератора" VerticalAlignment="Bottom"/>
-            <ComboBox Name="CBModer" Grid.Row="8" Margin="5 15"/>
-            <TextBlock Grid.Row="9" Text="Привязать мероприятие" VerticalAlignment="Bottom"/>
+            <TextBlock Grid.Row="0" Text="Добавление активности" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="1" Text="Название активности" VerticalAlignment="Bottom" />
+            <TextBox x:Name="TBName" Grid.Row="2" Margin="5 15" />
+            <TextBlock Grid.Row="3" Text="Продолжительность активности (в днях)" VerticalAlignment="Bottom" />
+            <TextBox x:Name="TBDur" Grid.Row="4" Margin="5 15" PreviewTextInput="TBDur_PreviewTextInput" />
+            <TextBlock Grid.Row="5" Text="Время начала активности" VerticalAlignment="Bottom" />
+            <DatePicker Name="DP" Grid.Row="6" Margin="5 10"  DisplayDateStart="{x:Static sys:DateTime.Today}" PreviewTextInput="DP_PreviewTextInput" />
+            <TextBlock Grid.Row="7" Text="Привязать модератора" VerticalAlignment="Bottom" />
+            <ComboBox Name="CBModer" Grid.Row="8" Margin="5 15" />
+            <TextBlock Grid.Row="9" Text="Привязать мероприятие" VerticalAlignment="Bottom" />
             <ComboBox Name="CBIvent"  Grid.Row="10" Margin="5 15" />
-            <Button Grid.Row="11" Content="Добавить" Margin="10" Click="Button_Click"/>
+            <Button Grid.Row="11" Content="Добавить" Margin="10" Click="Button_Click" />
         </Grid>
     </Grid>
 </Window>

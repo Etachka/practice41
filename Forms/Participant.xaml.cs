@@ -1,14 +1,14 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+
 using practice.Database;
 using practice.Models;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
+
 using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Linq;
 
 namespace practice.Forms
 {
@@ -91,8 +91,6 @@ namespace practice.Forms
             this.Close();
         }
 
-       
-
         private bool Check()
         {
             if (SurnameTxt.Text.IsNullOrEmpty() ||
@@ -150,7 +148,5 @@ namespace practice.Forms
                     }
             }
         }
-
-        
     }
 }

@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Профиль" Height="450" Width="800"  Icon="/пципиа.png" >
+        Title="Профиль" Height="450" Width="800"  Icon="/пципиа.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -28,25 +28,25 @@
                     <Image x:Name="ImageBox" Stretch="UniformToFill" Source="{Binding User.Photo}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Image>
                 </Border>
                 <StackPanel Grid.Row="1" Orientation="Vertical">
-                    <TextBlock Text="{Binding User.Name}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding User.Patronomic}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding User.Surname}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding User.Name}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" />
+                    <TextBlock Text="{Binding User.Patronomic}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" />
+                    <TextBlock Text="{Binding User.Surname}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" />
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
                 <StackPanel>
                     <TextBlock FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,0,0,10">
-                         <Run Text="Дата рождения: "/>
-                         <Run Text="{Binding User.Birthday, StringFormat={}{0:dd.MM.yyyy}}"/>
+                         <Run Text="Дата рождения: " />
+                         <Run Text="{Binding User.Birthday, StringFormat={}{0:dd.MM.yyyy}}" />
                     </TextBlock>
                     <TextBlock FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,10">
-                         <Run Text="Почта: "/>
-                         <Run Text="{Binding User.Email}"/>
+                         <Run Text="Почта: " />
+                         <Run Text="{Binding User.Email}" />
                     </TextBlock>
-                    <TextBlock Text="{Binding CountryName, StringFormat='Страна: {0}'}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <TextBlock Text="{Binding CountryName, StringFormat='Страна: {0}'}" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,10" />
                     <TextBlock FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,10">
-                         <Run Text="Телефон: "/>
-                         <Run Text="{Binding User.Phone}"/>
+                         <Run Text="Телефон: " />
+                         <Run Text="{Binding User.Phone}" />
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -57,7 +57,7 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <Border Grid.Column="2" BorderThickness="1" BorderBrush="DarkGray" Margin="25 2.5 25 2.5" CornerRadius="14">
-                    <Button Style="{DynamicResource ButtonStyle1}" Content="Сменить пароль" FontSize="16" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent"  Click="Button_Click"/>
+                    <Button Style="{DynamicResource ButtonStyle1}" Content="Сменить пароль" FontSize="16" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent"  Click="Button_Click" />
                 </Border>
             </Grid>
         </Grid>

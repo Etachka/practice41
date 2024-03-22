@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Data.SqlClient;
-using System.Data;
+﻿using Microsoft.IdentityModel.Tokens;
+
 using practice.Database;
 using practice.Models;
+
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Microsoft.IdentityModel.Tokens;
-using System.Diagnostics;
+using System.Data;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
+
 using Activity = practice.Models.Activity;
 
 namespace practice.Forms
@@ -32,14 +25,13 @@ namespace practice.Forms
         private List<Activity> activities;
         private Activity activity = new Activity();
 
-        
         public ActivitesAdd()
         {
             db = new PracticeContext();
             InitializeComponent();
             CBIvent.ItemsSource = GetIvents();
             CBModer.ItemsSource = GetModers();
-    }
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -51,7 +43,7 @@ namespace practice.Forms
             }
             activity.ModeratorId = CBModer.SelectedIndex;
             activity.IventId = CBIvent.SelectedIndex;
-            if(Check())
+            if (Check())
             {
                 db.Activites.Add(activity);
                 db.SaveChanges();
@@ -65,14 +57,17 @@ namespace practice.Forms
             if (Char.IsDigit(e.Text, 0))
             { e.Handled = true; }
         }
+
         public ObservableCollection<Ivent> GetIvents()
         {
             return new ObservableCollection<Ivent>(db.Ivents.ToList<Ivent>());
         }
+
         public ObservableCollection<User> GetModers()
         {
             return new ObservableCollection<User>(db.Users.Where(u => u.RoleId == 2).ToList<User>());
         }
+
         private bool Check()
         {
             if (TBName.Text.IsNullOrEmpty() ||
@@ -85,7 +80,7 @@ namespace practice.Forms
             }
             if (db.Ivents.Any(i => i.Name == TBName.Text))
             {
-                MessageBox.Show("Пользователь с такой почтой уже существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Такая активность уже существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
